@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\{
     Category,
     Plan,
+    Table,
     Tenant
 };
 use Illuminate\Database\Seeder;
@@ -30,6 +31,7 @@ class TenantsTableSeeder extends Seeder
 
         Tenant::factory(5)->create()->each(function ($tenant) {
             Category::factory(5)->create(['tenant_id' => $tenant->id]);
+            Table::factory(5)->create(['tenant_id' => $tenant->id]);
         });
     }
 }
