@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\{
+    Category,
     Plan,
     Tenant
 };
@@ -25,5 +26,10 @@ class TenantsTableSeeder extends Seeder
             'url' => 'especializati',
             'email' => 'carlos@especializati.com.br',
         ]);
+
+
+        Tenant::factory(5)->create()->each(function ($tenant) {
+            Category::factory(5)->create(['tenant_id' => $tenant->id]);
+        });
     }
 }
