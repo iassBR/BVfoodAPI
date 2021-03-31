@@ -17,7 +17,7 @@ class ProductResource extends JsonResource
         return [
             'titulo' => $this->title,
             'flag' => $this->flag,
-            'image' => $this->image,
+            'image' => url("storage/{$this->image}"),
             'description' => $this->description,
             'price' => $this->price,
         ];

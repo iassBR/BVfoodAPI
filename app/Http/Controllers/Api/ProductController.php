@@ -19,8 +19,10 @@ class ProductController extends Controller
 
     public function productsByTenant(TenantFormRequest $request)
     {
-
-        $products = $this->productService->getProductsByTenantUuid($request->token_company);
+        $products = $this->productService->getProductsByTenantUuid(
+            $request->token_company,
+            $request->get('categories', [])
+        );
 
         return ProductResource::collection($products);
     }
