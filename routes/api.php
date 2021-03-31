@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\{
     TenantController,
     TableController
 };
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,6 @@ Route::group([
 
     Route::get('/products', [ProductController::class, 'productsByTenant']);
     Route::get('/products/{flog}', [ProductController::class, 'show']);
+
+    Route::post('/client', [RegisterController::class, 'store']);
 });
