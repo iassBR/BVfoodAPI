@@ -20,16 +20,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/tenants/{uuid}', [TenantController::class, 'show']);
-Route::get('/tenants', [TenantController::class, 'index']);
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+], function () {
+    Route::get('/tenants/{uuid}', [TenantController::class, 'show']);
+    Route::get('/tenants', [TenantController::class, 'index']);
 
-Route::get('/categories/{url}', [CategoryController::class, 'show']);
-Route::get('/categories', [CategoryController::class, 'categoriesByTenant']);
+    Route::get('/categories/{url}', [CategoryController::class, 'show']);
+    Route::get('/categories', [CategoryController::class, 'categoriesByTenant']);
 
-Route::get('/tables/{identify}', [TableController::class, 'show']);
-Route::get('/tables', [TableController::class, 'tablesByTenant']);
+    Route::get('/tables/{identify}', [TableController::class, 'show']);
+    Route::get('/tables', [TableController::class, 'tablesByTenant']);
 
 
-Route::get('/products', [ProductController::class, 'productsByTenant']);
-Route::get('/products/{flog}', [ProductController::class, 'show']);
-
+    Route::get('/products', [ProductController::class, 'productsByTenant']);
+    Route::get('/products/{flog}', [ProductController::class, 'show']);
+});
