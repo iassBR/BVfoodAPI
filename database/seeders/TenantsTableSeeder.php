@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\{
     Category,
     Plan,
+    Product,
     Table,
     Tenant
 };
@@ -20,7 +21,6 @@ class TenantsTableSeeder extends Seeder
     public function run()
     {
         $plan = Plan::first();
-
         $plan->tenants()->create([
             'cnpj' => '23882706000120',
             'name' => 'EspecializaTi',
@@ -32,6 +32,7 @@ class TenantsTableSeeder extends Seeder
         Tenant::factory(5)->create()->each(function ($tenant) {
             Category::factory(5)->create(['tenant_id' => $tenant->id]);
             Table::factory(5)->create(['tenant_id' => $tenant->id]);
+            Product::factory(5)->create(['tenant_id' => $tenant->id]);
         });
     }
 }

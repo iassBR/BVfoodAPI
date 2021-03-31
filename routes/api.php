@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\{
     CategoryController,
+    ProductController,
     TenantController,
     TableController
 };
@@ -27,4 +28,8 @@ Route::get('/categories', [CategoryController::class, 'categoriesByTenant']);
 
 Route::get('/tables/{identify}', [TableController::class, 'show']);
 Route::get('/tables', [TableController::class, 'tablesByTenant']);
+
+
+// Route::get('/tables/{identify}', [ProductController::class, 'show']);
+Route::get('/products', [ProductController::class, 'productsByTenant']);
 
