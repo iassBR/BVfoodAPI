@@ -29,4 +29,11 @@ class ProductRepository implements ProductRepositoryInterface
             ->select('products.*')
             ->get();
     }
+
+    public function getProductByFlag(string $flag)
+    {
+        return $this->product
+            ->where('flag', $flag)
+            ->first();
+    }
 }

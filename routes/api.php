@@ -30,6 +30,6 @@ Route::get('/tables/{identify}', [TableController::class, 'show']);
 Route::get('/tables', [TableController::class, 'tablesByTenant']);
 
 
-// Route::get('/tables/{identify}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'productsByTenant']);
+Route::get('/products/{flog}', [ProductController::class, 'show']);
 
