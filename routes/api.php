@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\{
     TenantController,
     TableController
 };
+use App\Http\Controllers\Auth\AuthClientController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -22,14 +23,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/teste', function() {
-    $client = Client::first();
+Route::post('/sanctum/token', [AuthClientController::class, 'auth']);
 
-    $token = $client->createToken('token-pow');
-
-    dd($token->plainTextToken);
+Route::group([
+    'middleware' => ['auth:sanctum'],
+    'prefix' => 'auth',
+    'namespace' => 'Auth',
+], function () {
+    Route::get('/me', [AuthClientController::class, 'me']);
+    Route::post('/logout', [AuthClientController::class, 'logout']);
 });
- 
+
+
 
 Route::group([
     'prefix' => 'v1',
@@ -49,8 +54,4 @@ Route::group([
     Route::get('/products/{flog}', [ProductController::class, 'show']);
 
     Route::post('/client', [RegisterController::class, 'store']);
-
-    Route::post('/sanctum/token', [AuthClientController::class, 'auth']);
-
-
 });
