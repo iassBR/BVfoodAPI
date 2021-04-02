@@ -43,10 +43,10 @@ Route::group([
     Route::get('/tenants/{uuid}', [TenantController::class, 'show']);
     Route::get('/tenants', [TenantController::class, 'index']);
 
-    Route::get('/categories/{url}', [CategoryController::class, 'show']);
+    Route::get('/categories/{uuid}', [CategoryController::class, 'show']);
     Route::get('/categories', [CategoryController::class, 'categoriesByTenant']);
 
-    Route::get('/tables/{identify}', [TableController::class, 'show']);
+    Route::get('/tables/{uuid}', [TableController::class, 'show']);
     Route::get('/tables', [TableController::class, 'tablesByTenant']);
 
 

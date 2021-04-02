@@ -26,7 +26,7 @@ class TableService
 
     public function getTableByUuid(string $uuid)
     {
-        return $this->categoryRepository->getTableByUuid($uuid);
+        return $this->tableRepository->getTableByUuid($uuid);
     }
 
     public function getTableByIdentify(string $identify)

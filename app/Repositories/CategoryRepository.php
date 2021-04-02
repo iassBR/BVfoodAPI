@@ -39,10 +39,10 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->first();
     }
 
-    public function getCategoryByUrl(string $url)
-    {
-        return $this->category
-            ->where('url', $url)
-            ->first();
-    }
+    // public function getCategoryByUrl(string $url)
+    // {
+    //     return $this->category
+    //         ->where('url', $url)
+    //         ->first();
+    // }
 }

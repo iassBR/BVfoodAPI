@@ -10,5 +10,5 @@ interface CategoryRepositoryInterface
 
     public function getCategoryByUuid(string $uuid);
 
-    public function getCategoryByUrl(string $url);
+    // public function getCategoryByUrl(string $url);
 }

@@ -29,8 +29,8 @@ class CategoryService
         return $this->categoryRepository->getCategoryByUuid($uuid);
     }
 
-    public function getCategoryByUrl(string $url)
-    {
-        return $this->categoryRepository->getCategoryByUrl($url);
-    }
+//     public function getCategoryByUrl(string $url)
+//     {
+//         return $this->categoryRepository->getCategoryByUrl($url);
+//     }
 }
