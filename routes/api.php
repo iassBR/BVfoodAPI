@@ -51,7 +51,7 @@ Route::group([
 
 
     Route::get('/products', [ProductController::class, 'productsByTenant']);
-    Route::get('/products/{flog}', [ProductController::class, 'show']);
+    Route::get('/products/{uuid}', [ProductController::class, 'show']);
 
     Route::post('/client', [RegisterController::class, 'store']);
 });

@@ -27,9 +27,9 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
-    public function show(TenantFormRequest $request, $flag)
+    public function show(TenantFormRequest $request, $uuid)
     {
-        if (!$product = $this->productService->getProductByFlag($flag))
+        if (!$product = $this->productService->getProductByUuid($uuid))
             return response()->json(['message' => 'Product Not Found'], 404);
 
         return new ProductResource($product);
