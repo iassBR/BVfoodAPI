@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\{
     CategoryController,
+    OrderController,
     ProductController,
     TenantController,
     TableController
@@ -54,4 +55,7 @@ Route::group([
     Route::get('/products/{uuid}', [ProductController::class, 'show']);
 
     Route::post('/client', [RegisterController::class, 'store']);
+
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders/{identify}', [OrderController::class, 'show']);
 });
