@@ -34,6 +34,7 @@ Route::group([
     Route::get('/me', [AuthClientController::class, 'me']);
     Route::post('/logout', [AuthClientController::class, 'logout']);
 
+    Route::get('/v1/my-orders', [OrderController::class, 'myOrders']);
     Route::post('/v1/orders', [OrderController::class, 'store']);
 });
 

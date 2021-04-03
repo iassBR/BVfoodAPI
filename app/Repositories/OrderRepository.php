@@ -16,6 +16,11 @@ class OrderRepository implements OrderRepositoryInterface
         $this->order = $order;
     }
 
+    public function myOrders(int $clientId)
+    {
+        return $this->order->where('client_id', $clientId)->paginate();
+    }
+
 
     public function storeNewOrder(
         string $identify,

@@ -35,4 +35,11 @@ class OrderController extends Controller
 
         return new OrderResource($order);
     }
+
+    public function myOrders()
+    {
+        $orders = $this->orderService->myOrders();
+
+        return OrderResource::collection($orders);
+    }
 }
