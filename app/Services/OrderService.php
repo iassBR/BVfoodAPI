@@ -41,7 +41,7 @@ class OrderService
         $clientId = $this->getClientIdByOrder();
         $tableId = $this->getTableIdByOrder($order['table'] ?? '');
 
-        return $this->orderRepository->storeNewOrder(
+        $order = $this->orderRepository->storeNewOrder(
             $identify,
             $total,
             $status,
@@ -50,6 +50,10 @@ class OrderService
             $clientId,
             $tableId
         );
+
+        $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
+
+        return $order;
     }
 
     private function getIdentifyOrder(int $qtyCaraceters = 8)
