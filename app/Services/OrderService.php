@@ -31,17 +31,21 @@ class OrderService
         $total = $this->getTotalValueOrder([]);
         $status = 'open';
         $tenantId = $this->getTenantIdByOrder($order['token_company']);
+        $comment = isset($order['comment'])  ? $order['comment'] : '';
         $clientId = $this->getClientIdByOrder();
-        $tableId = $this->getTableIdByOrder($order['table']);
+        $tableId = $this->getTableIdByOrder($order['table'] ?? '');
 
-        $order = $this->orderRepository->storeNewOrder(
+       return $this->orderRepository->storeNewOrder(
             $identify,
             $total,
             $status,
             $tenantId,
+            $comment,
             $clientId,
             $tableId
         );
+
+        
     }
 
     private function getIdentifyOrder(int $qtyCaraceters = 8)
