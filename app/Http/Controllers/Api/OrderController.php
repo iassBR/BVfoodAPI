@@ -20,6 +20,7 @@ class OrderController extends Controller
 
     public function store(StoreOrderFormRequest $request)
     {
+        // dd($request->all());
         $order = $this->orderService->storeNewOrder($request->all());
 
         return new OrderResource($order);
