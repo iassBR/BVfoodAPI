@@ -54,7 +54,7 @@ Route::group([
     Route::get('/categories/{uuid}', [CategoryController::class, 'show']);
     Route::get('/categories', [CategoryController::class, 'categoriesByTenant']);
 
-    Route::get('/tables/{identify}', [TableController::class, 'show']);
+    Route::get('/tables/{uuid}', [TableController::class, 'show']);
     Route::get('/tables', [TableController::class, 'tablesByTenant']);
 
 
