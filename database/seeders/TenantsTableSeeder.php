@@ -29,7 +29,7 @@ class TenantsTableSeeder extends Seeder
         ]);
 
 
-        Tenant::factory(5)->create()->each(function ($tenant) {
+        Tenant::factory(5)->create(['plan_id' => $plan->id])->each(function ($tenant) {
             Category::factory(5)->create(['tenant_id' => $tenant->id]);
             Table::factory(5)->create(['tenant_id' => $tenant->id]);
             Product::factory(5)->create(['tenant_id' => $tenant->id]);
