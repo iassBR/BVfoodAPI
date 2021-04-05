@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\{
     CategoryController,
+    EvaluationController,
     OrderController,
     ProductController,
     TenantController,
@@ -36,6 +37,9 @@ Route::group([
 
     Route::get('/v1/my-orders', [OrderController::class, 'myOrders']);
     Route::post('/v1/orders', [OrderController::class, 'store']);
+
+    Route::post('/v1/orders/{identify}/evaluations', [EvaluationController::class, 'store']);
+    Route::get('/');
 });
 
 

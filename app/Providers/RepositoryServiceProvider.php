@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\{
     CategoryRepository,
     ClientRepository,
+    EvaluationRepository,
     OrderRepository,
     ProductRepository,
     TableRepository,
@@ -17,6 +18,7 @@ use App\Repositories\{
 use App\Repositories\Contracts\{
     CategoryRepositoryInterface,
     ClientRepositoryInterface,
+    EvaluationRepositoryInterface,
     OrderRepositoryInterface,
     ProductRepositoryInterface,
     TableRepositoryInterface,
@@ -60,6 +62,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
           OrderRepositoryInterface::class,
           OrderRepository::class
+        );
+
+        $this->app->bind(
+         EvaluationRepositoryInterface::class,
+         EvaluationRepository::class
         );
     }
 

@@ -16,6 +16,7 @@ class CreateEvaluationsTable extends Migration
         Schema::create('order_evaluations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('client_id');
             $table->integer('stars');
             $table->text('comment')->nullable();
@@ -28,6 +29,10 @@ class CreateEvaluationsTable extends Migration
             $table->foreign('client_id')
                         ->references('id')
                         ->on('clients')
+                        ->onDelete('cascade');
+            $table->foreign('tenant_id')
+                        ->references('id')
+                        ->on('tenants')
                         ->onDelete('cascade');
         });
     }
