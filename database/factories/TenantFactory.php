@@ -28,6 +28,7 @@ class TenantFactory extends Factory
             'name' => $name,
             'email' => $this->faker->unique()->safeEmail,
             'plan_id' => Plan::factory()->create()->id,
+            'uuid' => Str::uuid(4)
         ];
     }
 }
