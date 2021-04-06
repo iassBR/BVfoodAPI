@@ -157,8 +157,6 @@ class OrderTest extends TestCase
             'Authorization' => "Bearer {$token}"
         ]);
 
-        $response->dump();
-
         $response->assertStatus(201)
             ->assertJsonPath('data.total', 40);
     }
@@ -193,8 +191,6 @@ class OrderTest extends TestCase
 
 
         $response = $this->postJson('/api/v1/orders', $payload);
-
-        $response->dump();
 
         $response->assertStatus(201);
     }
