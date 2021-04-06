@@ -27,7 +27,7 @@ class ProductFactory extends Factory
             'title' => $this->faker->unique()->name,
             'description' => $this->faker->sentence,
             'image' => 'pizza.png',
-            'price' => 12.9,
+            'price' => 10,
         ];
     }
 }

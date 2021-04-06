@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Tenant\Traits\TenantTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use TenantTrait;
+    use TenantTrait, HasFactory;
 
     protected $fillable = ['tenant_id', 'identify', 'client_id', 'table_id', 'total', 'status', 'comment'];
 
