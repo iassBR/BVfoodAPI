@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class AuthClienteTest extends TestCase
 {
@@ -61,5 +62,63 @@ class AuthClienteTest extends TestCase
         $response = $this->postJson('/api/auth/token', $payload);
 
         $response->assertStatus(200)->assertJsonStructure(['token']);
+    }
+
+
+    /**
+     * Error get me.
+     *
+     * @return void
+     */
+    public function testErrorGetMe()
+    {
+
+        $response = $this->getJson('/api/auth/me');
+
+        $response->assertStatus(401);
+    }
+
+
+    /**
+     * Test Get me.
+     *
+     * @return void
+     */
+    public function testGetMe()
+    {
+        $client = Client::factory()->create();
+
+        $token = $client->createToken(Str::random(10))->plainTextToken;
+
+        $response = $this->getJson('/api/auth/me', [
+            'Authorization' => "Bearer {$token}"
+        ]);
+
+        $response->assertStatus(200)
+            ->assertExactJson([
+                'data' => [
+                    'name' => $client->name,
+                    'email' => $client->email
+                ]
+            ]);
+    }
+
+
+    /**
+     * Test Logout.
+     *
+     * @return void
+     */
+    public function testLogout()
+    {
+        $client = Client::factory()->create();
+
+        $token = $client->createToken(Str::random(10))->plainTextToken;
+
+        $response = $this->postJson('/api/auth/logout', [], [
+            'Authorization' => "Bearer {$token}"
+        ]);
+
+        $response->assertStatus(204);
     }
 }
